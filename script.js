@@ -1,261 +1,323 @@
-let players = JSON.parse(localStorage.getItem("players")) || [];
-let admissionsOpen = JSON.parse(localStorage.getItem("admissions")) ?? true;
+/* =============================================
+   STEPUP CRICKET ACADEMY — script.js
+   Works with Vercel serverless + Telegram bot
+   ============================================= */
 
-/* ================= UI ================= */
-.hero-buttons button:hover{
-transform:scale(1.05);
-transition:.2s;
-}
-.facility-grid i{
-margin-right:8px;
-color:var(--green);
-}
-table{
-display:block;
-overflow-x:auto;
-}
-@media(max-width:600px){
+let players = JSON.parse(localStorage.getItem("sca_players")) || [];
+let admissionsOpen = JSON.parse(localStorage.getItem("sca_admissions")) ?? true;
 
-.hero h1{
-font-size:1.8rem;
-}
+/* =============================================
+   NAVIGATION
+   ============================================= */
 
-.hero{
-padding:3rem 1rem;
-}
-
-}
 function show(id) {
-
-  // 🔐 Admin protection
-  if (id === "admin" && sessionStorage.getItem("admin") !== "true") {
-    alert("Login required");
+  if (id === "admin" && sessionStorage.getItem("sca_admin") !== "true") {
+    alert("Admin login required.");
+    show("login");
     return;
   }
 
-  document.querySelectorAll("section").forEach(section => {
-    section.classList.add("hidden");
+  document.querySelectorAll("section").forEach(s => s.classList.add("hidden"));
+  const target = document.getElementById(id);
+  if (target) target.classList.remove("hidden");
+
+  // Update active nav button
+  ["home","signup","login","admin"].forEach(key => {
+    const btn = document.getElementById("nav-" + key);
+    if (btn) btn.classList.toggle("active", key === id);
   });
 
-  const page = document.getElementById(id);
-  if (page) page.classList.remove("hidden");
-
   if (id === "admin") loadTable();
-  if (id === "signup") checkStatus();
-}
-.hero-overlay{
-max-width:900px;
-margin:auto;
+  if (id === "signup") checkAdmissionStatus();
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function logout() {
-  sessionStorage.removeItem("admin");
+  sessionStorage.removeItem("sca_admin");
   show("home");
 }
 
-function checkStatus() {
-
-  if (!window.admissionStatus || !window.signupForm) return;
-
-  admissionStatus.innerHTML = admissionsOpen
-    ? ""
-    : "<div class='error'>Admissions Closed</div>";
-
-  const btn = signupForm.querySelector("button");
-  if (btn) btn.disabled = !admissionsOpen;
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("hidden");
 }
 
-/* ================= ADMIN LOGIN ================= */
+/* =============================================
+   ADMISSION STATUS
+   ============================================= */
 
-if (window.loginForm) {
-  loginForm.onsubmit = async e => {
+function checkAdmissionStatus() {
+  const statusEl = document.getElementById("admissionStatus");
+  const submitBtn = document.getElementById("submitBtn");
 
-    e.preventDefault();
+  if (!admissionsOpen) {
+    statusEl.innerHTML = `<div class="msg-warning">⚠️ Admissions are currently closed. Please check back later.</div>`;
+    if (submitBtn) submitBtn.disabled = true;
+  } else {
+    statusEl.innerHTML = "";
+    if (submitBtn) submitBtn.disabled = false;
+  }
+}
 
-    try {
+function toggleAdmissions(state) {
+  admissionsOpen = state;
+  localStorage.setItem("sca_admissions", JSON.stringify(state));
+  const msg = state ? "✅ Admissions are now OPEN." : "🚫 Admissions are now CLOSED.";
+  alert(msg);
+}
 
-      const res = await fetch("/api/adminLogin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: adminEmail.value,
-          password: adminPass.value
-        })
-      });
+/* =============================================
+   ADMIN LOGIN — calls Vercel serverless API
+   ============================================= */
 
-      const data = await res.json();
+document.getElementById("loginForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const msgEl = document.getElementById("loginMsg");
+  const btn = e.target.querySelector("button[type=submit]");
+  const origText = btn.innerHTML;
 
-      if (data.success) {
-        sessionStorage.setItem("admin", "true");
-        show("admin");
-      } else {
-        alert("Invalid Login");
-      }
+  btn.disabled = true;
+  btn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> Verifying...`;
+  msgEl.innerHTML = "";
 
-    } catch (err) {
-      alert("Server error. Try again.");
-      console.error(err);
+  try {
+    const res = await fetch("/api/adminLogin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: document.getElementById("adminEmail").value.trim(),
+        password: document.getElementById("adminPass").value
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      sessionStorage.setItem("sca_admin", "true");
+      msgEl.innerHTML = `<div class="msg-success">✅ Login successful!</div>`;
+      setTimeout(() => show("admin"), 500);
+    } else {
+      msgEl.innerHTML = `<div class="msg-error">❌ Invalid email or password.</div>`;
     }
+  } catch (err) {
+    console.error("Login error:", err);
+    msgEl.innerHTML = `<div class="msg-error">❌ Server error. Please try again.</div>`;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origText;
+  }
+};
 
-  };
-}
-
-/* ================= GPS ================= */
+/* =============================================
+   GPS LOCATION
+   ============================================= */
 
 function getUserCoordinates() {
-
   return new Promise((resolve, reject) => {
-
     if (!navigator.geolocation) {
       reject("Geolocation not supported");
       return;
     }
-
     navigator.geolocation.getCurrentPosition(
-
-      pos => {
-
-        resolve({
-          lat: pos.coords.latitude.toFixed(6),
-          lon: pos.coords.longitude.toFixed(6),
-          map: `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`
-        });
-
-      },
-
+      pos => resolve({
+        lat: pos.coords.latitude.toFixed(6),
+        lon: pos.coords.longitude.toFixed(6),
+        map: `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`
+      }),
       err => reject(err),
-
-      { enableHighAccuracy: true }
-
+      { enableHighAccuracy: true, timeout: 8000 }
     );
-
   });
-
 }
 
-/* ================= BUTTON TIMER ================= */
+/* =============================================
+   SUBMIT BUTTON COOLDOWN
+   ============================================= */
 
-function disableSubmit(btn, sec = 10) {
-
-  if (!btn) return;
-
+function startCooldown(btn, seconds = 10) {
+  const original = btn.innerHTML;
   btn.disabled = true;
-
-  let time = sec;
-  const originalText = btn.innerText;
+  let remaining = seconds;
 
   const timer = setInterval(() => {
-
-    btn.innerText = `Please wait ${time}s`;
-    time--;
-
-    if (time < 0) {
-
+    btn.innerHTML = `<i class="fa fa-clock"></i> Please wait ${remaining}s`;
+    remaining--;
+    if (remaining < 0) {
       clearInterval(timer);
       btn.disabled = false;
-      btn.innerText = originalText;
-
+      btn.innerHTML = original;
     }
-
   }, 1000);
-
 }
 
-/* ================= SIGNUP FORM ================= */
+/* =============================================
+   PLAYER SIGNUP FORM
+   ============================================= */
 
-if (window.signupForm) {
+document.getElementById("signupForm").onsubmit = async (e) => {
+  e.preventDefault();
+  if (!admissionsOpen) return;
 
-  signupForm.onsubmit = async e => {
+  const submitBtn = document.getElementById("submitBtn");
+  const submitMsg = document.getElementById("submitMsg");
+  submitMsg.innerHTML = "";
 
-    e.preventDefault();
+  // Basic validation
+  const phone = document.getElementById("phone").value.trim();
+  const age = parseInt(document.getElementById("age").value);
 
-    if (!admissionsOpen) return;
+  if (!/^\d{10}$/.test(phone)) {
+    submitMsg.innerHTML = `<div class="msg-error">❌ Please enter a valid 10-digit mobile number.</div>`;
+    return;
+  }
 
-    const btn = signupForm.querySelector("button");
-    disableSubmit(btn, 10);
+  if (age < 5 || age > 15) {
+    submitMsg.innerHTML = `<div class="msg-error">❌ Age must be between 5 and 15 years.</div>`;
+    return;
+  }
 
-    let loc = { lat: "N/A", lon: "N/A", map: "N/A" };
+  // Start cooldown immediately
+  startCooldown(submitBtn, 10);
 
-    try {
-      loc = await getUserCoordinates();
-    } catch (err) {
-      console.warn("GPS error:", err);
-    }
+  // Try to get GPS location
+  let loc = { lat: "N/A", lon: "N/A", map: "N/A" };
+  try {
+    loc = await getUserCoordinates();
+  } catch (err) {
+    console.warn("GPS unavailable:", err.message || err);
+  }
 
-    const reg = "SCA-" + Date.now().toString().slice(-6);
+  // Generate registration number
+  const reg = "SCA-" + Date.now().toString().slice(-6);
 
-    const data = {
-
-      reg: reg,
-      name: playerName.value,
-      age: age.value,
-      parent: parentName.value,
-      phone: phone.value,
-      address: address.value,
-      timing: timing.value,
-
-      latitude: loc.lat,
-      longitude: loc.lon,
-      map: loc.map,
-
-      date: new Date().toLocaleString("en-IN")
-
-    };
-
-    players.push(data);
-
-    localStorage.setItem("players", JSON.stringify(players));
-
-    try {
-
-      await fetch("/api/sendTelegram", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-
-    } catch (err) {
-      console.error("Telegram send failed", err);
-    }
-
-    if (window.submitMsg) {
-      submitMsg.innerHTML =
-        "<div class='success'>Admission Successful! Telegram & GPS sent.</div>";
-    }
-
-    signupForm.reset();
-
+  const playerData = {
+    reg,
+    name: document.getElementById("playerName").value.trim(),
+    age: age.toString(),
+    parent: document.getElementById("parentName").value.trim(),
+    phone,
+    address: document.getElementById("address").value.trim(),
+    timing: document.getElementById("timing").value,
+    latitude: loc.lat,
+    longitude: loc.lon,
+    map: loc.map,
+    date: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
   };
 
+  // Save to localStorage
+  players.push(playerData);
+  localStorage.setItem("sca_players", JSON.stringify(players));
+
+  // Send Telegram notification (non-blocking)
+  sendTelegram(playerData);
+
+  // Show success
+  submitMsg.innerHTML = `
+    <div class="msg-success">
+      ✅ Registration submitted! Your Reg No: <strong>${reg}</strong>
+    </div>`;
+
+  e.target.reset();
+};
+
+/* =============================================
+   TELEGRAM NOTIFICATION
+   ============================================= */
+
+async function sendTelegram(data) {
+  try {
+    const res = await fetch("/api/sendTelegram", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) {
+      console.warn("Telegram API responded with:", res.status);
+    }
+  } catch (err) {
+    console.error("Telegram send failed:", err);
+    // Silent fail — user registration already saved locally
+  }
 }
 
-/* ================= ADMIN TABLE ================= */
+/* =============================================
+   ADMIN TABLE
+   ============================================= */
 
 function loadTable() {
+  const tbody = document.getElementById("tableBody");
+  const countEl = document.getElementById("playerCount");
+  tbody.innerHTML = "";
 
-  if (!window.tableBody) return;
+  if (players.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:#aaa;padding:2rem">No registrations yet.</td></tr>`;
+    if (countEl) countEl.textContent = "0";
+    return;
+  }
 
-  tableBody.innerHTML = "";
+  players.forEach(p => {
+    const row = tbody.insertRow();
+    const mapLink = p.map && p.map !== "N/A"
+      ? `<a href="${p.map}" target="_blank" title="View on map">📍 View</a>`
+      : "N/A";
 
-  players.forEach(player => {
-
-    const row = tableBody.insertRow();
-
-    ["reg", "name", "age", "parent", "phone", "timing", "date"].forEach(key => {
-
-      const cell = row.insertCell();
-      cell.textContent = player[key] || "";
-
-    });
-
+    row.innerHTML = `
+      <td><strong>${p.reg}</strong></td>
+      <td>${p.name}</td>
+      <td>${p.age}</td>
+      <td>${p.parent}</td>
+      <td>${p.phone}</td>
+      <td>${p.timing}</td>
+      <td>${mapLink}</td>
+      <td>${p.date}</td>
+    `;
   });
 
+  if (countEl) countEl.textContent = players.length;
 }
 
-/* ================= INIT ================= */
+/* =============================================
+   EXPORT CSV
+   ============================================= */
 
-show("home");
+function exportCSV() {
+  if (players.length === 0) {
+    alert("No player data to export.");
+    return;
+  }
+
+  const headers = ["Reg No","Name","Age","Parent","Phone","Address","Timing","Latitude","Longitude","Map","Date"];
+  const rows = players.map(p => [
+    p.reg, p.name, p.age, p.parent, p.phone,
+    `"${p.address}"`, p.timing, p.latitude, p.longitude,
+    p.map, `"${p.date}"`
+  ].join(","));
+
+  const csv = [headers.join(","), ...rows].join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `SCA_Players_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* =============================================
+   INIT
+   ============================================= */
+
+// Request GPS on load for faster signup later
+window.addEventListener("load", () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      () => {},
+      () => {}
+    );
+  }
+
+  show("home");
+});
