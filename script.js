@@ -2,7 +2,29 @@ let players = JSON.parse(localStorage.getItem("players")) || [];
 let admissionsOpen = JSON.parse(localStorage.getItem("admissions")) ?? true;
 
 /* ================= UI ================= */
+.hero-buttons button:hover{
+transform:scale(1.05);
+transition:.2s;
+}
+.facility-grid i{
+margin-right:8px;
+color:var(--green);
+}
+table{
+display:block;
+overflow-x:auto;
+}
+@media(max-width:600px){
 
+.hero h1{
+font-size:1.8rem;
+}
+
+.hero{
+padding:3rem 1rem;
+}
+
+}
 function show(id) {
 
   // 🔐 Admin protection
@@ -20,6 +42,10 @@ function show(id) {
 
   if (id === "admin") loadTable();
   if (id === "signup") checkStatus();
+}
+.hero-overlay{
+max-width:900px;
+margin:auto;
 }
 
 function logout() {
