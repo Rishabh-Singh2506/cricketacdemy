@@ -30,8 +30,8 @@ function show(id) {
   if (id === "admin") loadTable();
   if (id === "signup") checkAdmissionStatus();
 
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // Scroll to section (not top of page)
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function logout() {
@@ -173,8 +173,8 @@ document.getElementById("signupForm").onsubmit = async (e) => {
     return;
   }
 
-  if (age < 5 || age > 15) {
-    submitMsg.innerHTML = `<div class="msg-error">❌ Age must be between 5 and 15 years.</div>`;
+  if (age < 5 || age > 18) {
+    submitMsg.innerHTML = `<div class="msg-error">❌ Age must be between 5 and 18 years.</div>`;
     return;
   }
 
