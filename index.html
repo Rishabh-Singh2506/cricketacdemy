@@ -29,10 +29,12 @@ window.addEventListener("load", () => {
 <header class="hero">
   <div class="hero-overlay">
     <h1>🏏 StepUp Cricket Academy</h1>
-    <p>Gohri, Phaphamau, Prayagraj | Under-15 Professional Cricket Training</p>
+    <p>Gohri, Phaphamau, Prayagraj | Under-18 Professional Cricket Training</p>
 
-    <a href="https://maps.app.goo.gl/9nzN7jMa89njPS9aA?g_st=ac" target="_blank" class="map-btn">
-      📍 View on Google Maps
+   <a href="https://maps.app.goo.gl/9nzN7jMa89njPS9aA?g_st=ac" target="_blank" class="map-btn">
+📍 View on Google Maps
+</a>
+
       
     
 
@@ -55,7 +57,7 @@ window.addEventListener("load", () => {
   <div class="card">
     <h2>🏟️ Our Facilities</h2>
     <div class="facility-grid">
-      <div>   <bold>Click on Player Sigup for registration</bold></div>
+      <div>   <b>Click on Player Signup for registration</b></div>
       <div><i class="fa fa-baseball-bat-ball"></i> Astro Turf Ground</div>
       <div><i class="fa fa-network-wired"></i> Net Practice Area</div>
       <div><i class="fa fa-spa"></i> Hostel facility is available</div>
@@ -75,10 +77,10 @@ window.addEventListener("load", () => {
 
     <form id="signupForm">
       <input id="playerName" placeholder="Player Name" required>
-      <input id="age" type="number" min="5" max="50" placeholder="Age Minimum 5 - Maximum 15" required>
+      <input id="age" type="number" min="5" max="18" placeholder="Age Minimum 5 - Maximum 18" required>
       <input id="parentName" placeholder="Parent Name" required>
-      <input id="phone" placeholder="10-digit Mobile Number"
-         pattern="[0-9]{10}"
+      <input id="phone" type="tel" placeholder="10-digit Mobile Number"
+        pattern="[0-9]{10}"
           maxlength="10"
          inputmode="numeric" required>
       <input id="address" placeholder="Address" required>
@@ -132,6 +134,7 @@ window.addEventListener("load", () => {
 <script src="/script.js"></script>
 </body>
 </html>
+
 
 
 
