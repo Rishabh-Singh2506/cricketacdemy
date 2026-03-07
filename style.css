@@ -20,7 +20,7 @@
   --radius: 14px;
   --radius-sm: 8px;
   --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
