@@ -1,0 +1,156 @@
+:root{
+--green:#0b6623;
+--accent:#ff4500;
+--danger:#c0392b;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Segoe UI,Arial;
+background:linear-gradient(135deg,#0b6623,#7CFC98);
+}
+
+.map-btn {
+  display: inline-block;
+  margin: 15px 0;
+  padding: 12px 22px;
+  background: #1e88e5;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.map-btn:hover {
+  background: #1565c0;
+}
+
+
+.hero{
+text-align:center;
+padding:4rem 1rem;
+background:linear-gradient(135deg,#0b6623,#1e8f3d);
+color:white;
+}
+
+.hero h1{font-size:2.5rem;margin-bottom:.5rem}
+.hero-buttons button{
+margin:.5rem;
+padding:.8rem 1.6rem;
+border:none;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+background:var(--accent);
+color:white;
+}
+.hero-buttons .outline{
+background:transparent;
+border:2px solid white;
+}
+
+button:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
+}
+
+
+nav{
+background:white;
+display:flex;
+justify-content:center;
+gap:.6rem;
+padding:.8rem;
+flex-wrap:wrap;
+}
+
+nav button{
+border:none;
+padding:.6rem 1.2rem;
+border-radius:20px;
+font-weight:bold;
+cursor:pointer;
+background:var(--accent);
+color:white;
+}
+
+nav .red{background:var(--danger)}
+
+section{
+max-width:1100px;
+margin:auto;
+padding:1.5rem;
+}
+
+.hidden{display:none}
+
+.card{
+background:white;
+padding:1.5rem;
+border-radius:15px;
+box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+
+.facility-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:1rem;
+margin-top:1rem;
+}
+.facility-grid div{
+background:#f4fff6;
+padding:1rem;
+border-radius:10px;
+font-weight:600;
+}
+
+input,select{
+width:100%;
+padding:.7rem;
+margin:.4rem 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button.submit{
+background:var(--green);
+color:white;
+padding:.9rem;
+border:none;
+border-radius:8px;
+width:100%;
+}
+
+.success{background:#d4edda;padding:1rem;border-radius:6px}
+.error{background:#f8d7da;padding:1rem;border-radius:6px}
+
+.admin-controls{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:1rem;
+margin-bottom:1rem;
+}
+.admin-controls .stop{background:var(--danger);color:white}
+.admin-controls .start{background:#27ae60;color:white}
+
+table{
+width:100%;
+border-collapse:collapse;
+font-size:.9rem;
+}
+th,td{padding:.6rem;border-bottom:1px solid #ddd}
+th{background:var(--green);color:white}
+
+footer{
+text-align:center;
+padding:2rem;
+color:white;
+}
+footer .social a{
+color:white;
+font-size:1.4rem;
+margin:.5rem;
+}

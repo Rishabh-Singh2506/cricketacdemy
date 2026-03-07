@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>StepUp Cricket Academy | Admissions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="/style.css">
+
+<!-- GPS Permission on Page Load -->
+<script>
+window.addEventListener("load", () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      () => console.log("GPS permission granted"),
+      () => console.warn("GPS permission denied")
+    );
+  }
+});
+</script>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-overlay">
+    <h1>🏏 StepUp Cricket Academy</h1>
+    <p>Gohri, Phaphamau, Prayagraj | Under-15 Professional Cricket Training</p>
+
+    <a href="https://maps.app.goo.gl/9nzN7jMa89njPS9aA?g_st=ac" target="_blank" class="map-btn">
+      📍 View on Google Maps
+      
+    <a href="my_website.html" target="_blank" class="map-btn">Open My website</a>
+
+
+    <div class="hero-buttons">
+      <button onclick="show('signup')">Join Now</button>
+      <button onclick="show('home')" class="outline">Explore Facilities</button>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <button onclick="show('home')"><i class="fa fa-house"></i> Home</button>
+  <button onclick="show('signup')"><i class="fa fa-user-plus"></i> Player Signup</button>
+  <button onclick="show('login')"><i class="fa fa-lock"></i> Admin Login</button>
+  <button class="red" onclick="logout()"><i class="fa fa-right-from-bracket"></i> Logout</button>
+</nav>
+
+<section id="home">
+  <div class="card">
+    <h2>🏟️ Our Facilities</h2>
+    <div class="facility-grid">
+      <div>   <bold>Click on Player Sigup for registration</bold></div>
+      <div><i class="fa fa-baseball-bat-ball"></i> Astro Turf Ground</div>
+      <div><i class="fa fa-network-wired"></i> Net Practice Area</div>
+      <div><i class="fa fa-spa"></i> Yoga & Fitness</div>
+      <div><i class="fa fa-shower"></i> Clean Bathrooms</div>
+      <div><i class="fa fa-baseball"></i> New Equipment</div>
+      <div><i class="fa fa-user-tie"></i> Certified Coach</div>
+      <div><i class="fa fa-video"></i> Video Analysis</div>
+      <div><i class="fa fa-trophy"></i> Weekly Matches</div>
+    </div>
+  </div>
+</section>
+
+<section id="signup" class="hidden">
+  <div class="card">
+    <h2>📝 Player Admission Form</h2>
+    <div id="admissionStatus"></div>
+
+    <form id="signupForm">
+      <input id="playerName" placeholder="Player Name" required>
+      <input id="age" type="number" min="5" max="50" placeholder="Age Minimum 5 - Maximum 15" required>
+      <input id="parentName" placeholder="Parent Name" required>
+      <input id="phone" placeholder="10-digit Mobile Number"
+         pattern="[0-9]{10}"
+          maxlength="10"
+         inputmode="numeric" required>
+      <input id="address" placeholder="Address" required>
+
+      <select id="timing" required>
+        <option value="">Select Timing</option>
+        <option>9 AM - 12 PM</option>
+        <option>4 PM - 7 PM</option>
+        <option>7 PM - 10 PM</option>
+        <option>9 AM - 12 PM and 4 PM - 7 PM BOTH</option>
+        
+      </select>
+
+      <button class="submit">Submit Admission</button>
+    </form>
+
+    <div id="submitMsg"></div>
+  </div>
+</section>
+
+<section id="login" class="hidden">
+  <div class="card">
+    <h2>🔐 Admin Login</h2>
+    <form id="loginForm">
+      <input id="adminEmail" placeholder="Email" required>
+      <input id="adminPass" type="password" placeholder="Password" required>
+      <button class="submit">Login</button>
+    </form>
+  </div>
+</section>
+
+<section id="admin" class="hidden">
+  <div class="card">
+    <h2>📊 Admin Dashboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Reg No</th><th>Name</th><th>Age</th>
+          <th>Parent</th><th>Phone</th><th>Timing</th><th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 StepUp Cricket Academy. All Rights Reserved.</p>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
