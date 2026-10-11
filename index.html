@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>StepUp Cricket Academy | Admissions 2026</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="StepUp Cricket Academy - Professional Under-18 Cricket Training in Prayagraj">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>StepUp Cricket Academy | Admissions 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="StepUp Cricket Academy - Professional Under-18 Cricket Training in Prayagraj">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Professional Vector Icons (FontAwesome 6) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAVIGATION BAR -->
 <nav id="navbar">
   <div class="nav-inner">
-    <div class="nav-logo">🏏 <span>StepUp</span></div>
+    <div class="nav-logo"><i class="fa-solid fa-baseball-bat-ball"></i> <span>StepUp</span></div>
     <div class="nav-links">
-      <button onclick="show('home')" class="nav-btn active" id="nav-home"><i class="fa fa-house"></i> Home</button>
-      <button onclick="show('signup')" class="nav-btn" id="nav-signup"><i class="fa fa-user-plus"></i> Register</button>
-      <button onclick="show('login')" class="nav-btn" id="nav-login"><i class="fa fa-lock"></i> Admin</button>
-      <button onclick="logout()" class="nav-btn logout-btn"><i class="fa fa-right-from-bracket"></i></button>
+      <button onclick="show('home')" class="nav-btn active" id="nav-home"><i class="fa-solid fa-house"></i> Home</button>
+      <button onclick="show('signup')" class="nav-btn" id="nav-signup"><i class="fa-solid fa-user-plus"></i> Register</button>
+      <button onclick="show('login')" class="nav-btn" id="nav-login"><i class="fa-solid fa-shield-halved"></i> Admin</button>
+      <button onclick="logout()" class="nav-btn logout-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -31,23 +37,75 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu hidden" id="mobileMenu">
-  <button onclick="show('home');toggleMenu()"><i class="fa fa-house"></i> Home</button>
-  <button onclick="show('signup');toggleMenu()"><i class="fa fa-user-plus"></i> Register</button>
-  <button onclick="show('login');toggleMenu()"><i class="fa fa-lock"></i> Admin Login</button>
-  <button onclick="logout();toggleMenu()" class="logout-btn"><i class="fa fa-right-from-bracket"></i> Logout</button>
+  <button onclick="show('home');toggleMenu()"><i class="fa-solid fa-house"></i> Home</button>
+  <button onclick="show('signup');toggleMenu()"><i class="fa-solid fa-user-plus"></i> Register</button>
+  <button onclick="show('login');toggleMenu()"><i class="fa-solid fa-shield-halved"></i> Admin Login</button>
+  <button onclick="logout();toggleMenu()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
 </div>
 
-<!-- HERO -->
+<!-- ==========================================
+     TOP INFINITE MOVING CARDS (PHOTO TICKER)
+     Yahan 'src' me apni photos ke links lagayein
+=========================================== -->
+<div class="ticker-section">
+  <div class="ticker-track">
+    <!-- Set 1 Cards -->
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80" alt="Batting Practice">
+      <div class="ticker-overlay"><span>Net Sessions</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1531415074868-036b107e7758?auto=format&fit=crop&w=600&q=80" alt="Match Ground">
+      <div class="ticker-overlay"><span>Turf Pitch</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=600&q=80" alt="Fitness Drills">
+      <div class="ticker-overlay"><span>Fitness & Drills</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=600&q=80" alt="Bowling Action">
+      <div class="ticker-overlay"><span>Bowling Analysis</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1512719994953-eabf50895df7?auto=format&fit=crop&w=600&q=80" alt="Academy Match">
+      <div class="ticker-overlay"><span>Tournaments</span></div>
+    </div>
+
+    <!-- Set 2 Cards (Duplicate for seamless endless loop) -->
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=600&q=80" alt="Batting Practice">
+      <div class="ticker-overlay"><span>Net Sessions</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1531415074868-036b107e7758?auto=format&fit=crop&w=600&q=80" alt="Match Ground">
+      <div class="ticker-overlay"><span>Turf Pitch</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=600&q=80" alt="Fitness Drills">
+      <div class="ticker-overlay"><span>Fitness & Drills</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=600&q=80" alt="Bowling Action">
+      <div class="ticker-overlay"><span>Bowling Analysis</span></div>
+    </div>
+    <div class="ticker-card">
+      <img src="https://images.unsplash.com/photo-1512719994953-eabf50895df7?auto=format&fit=crop&w=600&q=80" alt="Academy Match">
+      <div class="ticker-overlay"><span>Tournaments</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
 <header class="hero" id="hero-section">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">⚡ Admissions Open 2026</div>
+    <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Admissions Open 2026</div>
     <h1 class="hero-title">StepUp<br><span>Cricket Academy</span></h1>
     <p class="hero-sub">Under-18 Professional Cricket Training<br>Gohri, Phaphamau, Prayagraj-211013</p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="show('signup')">Join Now <i class="fa fa-arrow-right"></i></button>
+      <button class="btn-primary" onclick="show('signup')">Join Now <i class="fa-solid fa-arrow-right"></i></button>
       <a href="https://maps.app.goo.gl/9nzN7jMa89njPS9aA?g_st=ac" target="_blank" class="btn-outline">
-        <i class="fa fa-location-dot"></i> Get Directions
+        <i class="fa-solid fa-location-dot"></i> Get Directions
       </a>
     </div>
   </div>
@@ -60,7 +118,7 @@
   </div>
 </header>
 
-<!-- HOME -->
+<!-- HOME / FACILITIES -->
 <section id="home">
   <div class="section-header">
     <h2>World-Class <span>Facilities</span></h2>
@@ -69,42 +127,42 @@
 
   <div class="facility-grid">
     <div class="facility-card featured">
-      <div class="facility-icon">🏟️</div>
+      <div class="facility-icon"><i class="fa-solid fa-mountain-sun"></i></div>
       <h3>Astro Turf Ground</h3>
       <p>Professional-grade synthetic turf for all-weather training</p>
     </div>
     <div class="facility-card">
-      <div class="facility-icon">🎯</div>
+      <div class="facility-icon"><i class="fa-solid fa-bullseye"></i></div>
       <h3>Net Practice Area</h3>
       <p>Dedicated nets for batting & bowling drills</p>
     </div>
     <div class="facility-card">
-      <div class="facility-icon">🏠</div>
+      <div class="facility-icon"><i class="fa-solid fa-hotel"></i></div>
       <h3>Hostel Facility</h3>
       <p>Comfortable stay available for outstation players</p>
     </div>
     <div class="facility-card">
-      <div class="facility-icon">🎥</div>
+      <div class="facility-icon"><i class="fa-solid fa-video"></i></div>
       <h3>Video Analysis</h3>
       <p>Technique review with slow-motion footage</p>
     </div>
     <div class="facility-card">
-      <div class="facility-icon">🏆</div>
+      <div class="facility-icon"><i class="fa-solid fa-trophy"></i></div>
       <h3>Weekly Matches</h3>
       <p>Competitive match practice every week</p>
     </div>
     <div class="facility-card">
-      <div class="facility-icon">🎓</div>
+      <div class="facility-icon"><i class="fa-solid fa-certificate"></i></div>
       <h3>Certified Coach</h3>
       <p>BCCI-standard coaching methodology</p>
     </div>
     <div class="facility-card">
-      <div class="facility-icon">🏏</div>
+      <div class="facility-icon"><i class="fa-solid fa-baseball-bat-ball"></i></div>
       <h3>New Equipment</h3>
       <p>High-quality bats, pads & protective gear</p>
     </div>
     <div class="facility-card">
-      <div class="facility-icon">🚿</div>
+      <div class="facility-icon"><i class="fa-solid fa-shower"></i></div>
       <h3>Clean Bathrooms</h3>
       <p>Well-maintained changing & wash facilities</p>
     </div>
@@ -115,11 +173,11 @@
       <h3>Ready to start your cricket journey?</h3>
       <p>Limited seats available — register today!</p>
     </div>
-    <button class="btn-primary" onclick="show('signup')">Apply Now <i class="fa fa-arrow-right"></i></button>
+    <button class="btn-primary" onclick="show('signup')">Apply Now <i class="fa-solid fa-arrow-right"></i></button>
   </div>
 </section>
 
-<!-- SIGNUP -->
+<!-- SIGNUP SECTION -->
 <section id="signup" class="hidden">
   <div class="section-header">
     <h2>Player <span>Registration</span></h2>
@@ -131,30 +189,30 @@
     <form id="signupForm" novalidate>
       <div class="form-row">
         <div class="form-group">
-          <label><i class="fa fa-user"></i> Player Name</label>
+          <label><i class="fa-solid fa-user"></i> Player Name</label>
           <input id="playerName" placeholder="Full name of the player" required>
         </div>
         <div class="form-group">
-          <label><i class="fa fa-cake-candles"></i> Age</label>
+          <label><i class="fa-solid fa-cake-candles"></i> Age</label>
           <input id="age" type="number" min="5" max="18" placeholder="Age (5–18 years)" required>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label><i class="fa fa-user-tie"></i> Parent / Guardian Name</label>
+          <label><i class="fa-solid fa-user-group"></i> Parent / Guardian Name</label>
           <input id="parentName" placeholder="Parent or guardian name" required>
         </div>
         <div class="form-group">
-          <label><i class="fa fa-phone"></i> Mobile Number</label>
+          <label><i class="fa-solid fa-phone"></i> Mobile Number</label>
           <input id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" required>
         </div>
       </div>
       <div class="form-group full">
-        <label><i class="fa fa-map-marker-alt"></i> Address</label>
+        <label><i class="fa-solid fa-location-dot"></i> Address</label>
         <input id="address" placeholder="Full address" required>
       </div>
       <div class="form-group full">
-        <label><i class="fa fa-clock"></i> Preferred Batch Timing</label>
+        <label><i class="fa-solid fa-clock"></i> Preferred Batch Timing</label>
         <select id="timing" required>
           <option value="">— Select a timing —</option>
           <option>6 AM (Morning)</option>
@@ -164,14 +222,14 @@
         </select>
       </div>
       <button type="submit" class="btn-submit" id="submitBtn">
-        <span id="submitText"><i class="fa fa-paper-plane"></i> Submit Registration</span>
+        <span id="submitText"><i class="fa-solid fa-paper-plane"></i> Submit Registration</span>
       </button>
     </form>
     <div id="submitMsg"></div>
   </div>
 </section>
 
-<!-- LOGIN -->
+<!-- ADMIN LOGIN SECTION -->
 <section id="login" class="hidden">
   <div class="section-header">
     <h2>Admin <span>Login</span></h2>
@@ -180,29 +238,29 @@
   <div class="form-wrapper narrow">
     <form id="loginForm" novalidate>
       <div class="form-group full">
-        <label><i class="fa fa-envelope"></i> Email Address</label>
+        <label><i class="fa-solid fa-envelope"></i> Email Address</label>
         <input id="adminEmail" type="email" placeholder="admin@stepupcricket.in" required>
       </div>
       <div class="form-group full">
-        <label><i class="fa fa-lock"></i> Password</label>
+        <label><i class="fa-solid fa-lock"></i> Password</label>
         <input id="adminPass" type="password" placeholder="Enter password" required>
       </div>
-      <button type="submit" class="btn-submit"><i class="fa fa-right-to-bracket"></i> Login</button>
+      <button type="submit" class="btn-submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
     </form>
     <div id="loginMsg"></div>
   </div>
 </section>
 
-<!-- ADMIN DASHBOARD -->
+<!-- ADMIN DASHBOARD SECTION -->
 <section id="admin" class="hidden">
   <div class="section-header">
     <h2>Admin <span>Dashboard</span></h2>
     <p>All registered players</p>
   </div>
   <div class="admin-controls">
-    <button class="btn-danger" onclick="toggleAdmissions(false)"><i class="fa fa-ban"></i> Close Admissions</button>
-    <button class="btn-success" onclick="toggleAdmissions(true)"><i class="fa fa-check"></i> Open Admissions</button>
-    <button class="btn-outline-sm" onclick="exportCSV()"><i class="fa fa-download"></i> Export CSV</button>
+    <button class="btn-danger" onclick="toggleAdmissions(false)"><i class="fa-solid fa-ban"></i> Close Admissions</button>
+    <button class="btn-success" onclick="toggleAdmissions(true)"><i class="fa-solid fa-check"></i> Open Admissions</button>
+    <button class="btn-outline-sm" onclick="exportCSV()"><i class="fa-solid fa-file-arrow-down"></i> Export CSV</button>
     <div class="player-count">Total: <strong id="playerCount">0</strong> players</div>
   </div>
   <div class="table-wrapper">
@@ -219,9 +277,10 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">🏏 StepUp Cricket Academy</div>
+    <div class="footer-logo"><i class="fa-solid fa-baseball-bat-ball"></i> StepUp Cricket Academy</div>
     <p>Gohri, Phaphamau, Prayagraj, Uttar Pradesh</p>
     <p class="footer-copy">© 2026 StepUp Cricket Academy. All Rights Reserved.</p>
   </div>
