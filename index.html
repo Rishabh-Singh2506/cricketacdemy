@@ -722,7 +722,8 @@
 <div class="mobile-menu hidden" id="mobileMenu">
   <button onclick="show('home');toggleMenu()"><i class="fa-solid fa-house"></i> Home</button>
   <button onclick="show('signup');toggleMenu()"><i class="fa-solid fa-user-plus"></i> Register</button>
-  <button onclick="show('login');toggleMenu()"><i class="fa-solid fa-shield-halved"></i> Admin Login</button>
+ <!-- <button onclick="show('login');toggleMenu()"><i class="fa-solid fa-shield-halved"></i> Admin Login</button>-->
+  <button onclick="window.location.href='admin.html'" class="nav-btn"><i class="fa-solid fa-shield-halved"></i> Admin</button>
   <button onclick="logout();toggleMenu()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
 </div>
 
@@ -923,9 +924,9 @@
         <label><i class="fa-solid fa-clock"></i> Preferred Batch Timing</label>
         <select id="timing" required>
           <option value="">— Select a timing —</option>
-          <option>6 AM (Morning)</option>
+          <option>6:00 AM (Morning)</option>
           <option>9:30 AM (Morning)</option>
-          <option>3 PM (Evening)</option>
+          <option>3:00 PM (Evening)</option>
           <option>6:30 PM (Evening)</option>
         </select>
       </div>
