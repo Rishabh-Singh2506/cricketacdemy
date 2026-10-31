@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ===================================================
-       1. GLOBAL RESET & THEME VARIABLES
-    =================================================== */
     :root {
       --bg-dark: #070d18;
       --bg-card: #0f172a;
@@ -61,9 +58,7 @@
       display: none !important;
     }
 
-    /* ===================================================
-       2. NAVIGATION BAR
-    =================================================== */
+    /* NAVIGATION BAR */
     #navbar {
       position: sticky;
       top: 0;
@@ -158,9 +153,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* ===================================================
-       3. TOP MOVING HORIZONTAL CARDS (TICKER)
-    =================================================== */
+    /* TICKER CAROUSEL */
     .ticker-section {
       width: 100%;
       overflow-x: auto;
@@ -191,12 +184,8 @@
     }
 
     @keyframes moveRightToLeft {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .ticker-section:hover .ticker-track,
@@ -253,9 +242,7 @@
       font-size: 0.8rem;
     }
 
-    /* ===================================================
-       4. HERO SECTION
-    =================================================== */
+    /* HERO SECTION */
     .hero {
       position: relative;
       padding: 80px 20px 60px;
@@ -379,9 +366,7 @@
       background: var(--border-color);
     }
 
-    /* ===================================================
-       5. CONTENT SECTIONS & FACILITIES
-    =================================================== */
+    /* SECTIONS & FACILITIES */
     section {
       max-width: 1100px;
       margin: 0 auto;
@@ -471,9 +456,7 @@
       color: var(--text-muted);
     }
 
-    /* ===================================================
-       6. FORMS & INPUTS (SIGNUP & ADMIN)
-    =================================================== */
+    /* FORMS & INPUTS */
     .form-wrapper {
       max-width: 650px;
       margin: 0 auto;
@@ -554,7 +537,6 @@
       background: var(--accent-hover);
     }
 
-    /* Admin Controls & Table */
     .admin-controls {
       display: flex;
       justify-content: space-between;
@@ -593,9 +575,7 @@
       font-weight: 700;
     }
 
-    /* ===================================================
-       7. IMAGE LIGHTBOX / MODAL
-    =================================================== */
+    /* LIGHTBOX MODAL */
     .lightbox-modal {
       position: fixed;
       inset: 0;
@@ -665,9 +645,6 @@
       to { opacity: 1; }
     }
 
-    /* ===================================================
-       8. FOOTER
-    =================================================== */
     footer {
       border-top: 1px solid var(--border-color);
       padding: 40px 20px;
@@ -690,7 +667,6 @@
     footer p { color: var(--text-muted); font-size: 0.9rem; }
     .footer-copy { margin-top: 12px; font-size: 0.8rem !important; }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -702,7 +678,7 @@
 </head>
 <body>
 
-<!-- 1. NAVIGATION BAR -->
+<!-- NAVIGATION BAR -->
 <nav id="navbar">
   <div class="nav-inner">
     <div class="nav-logo"><i class="fa-solid fa-baseball-bat-ball"></i> <span>StepUp</span></div>
@@ -718,96 +694,62 @@
   </div>
 </nav>
 
-<!-- 2. MOBILE MENU -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu hidden" id="mobileMenu">
   <button onclick="show('home');toggleMenu()"><i class="fa-solid fa-house"></i> Home</button>
   <button onclick="show('signup');toggleMenu()"><i class="fa-solid fa-user-plus"></i> Register</button>
- <!-- <button onclick="show('login');toggleMenu()"><i class="fa-solid fa-shield-halved"></i> Admin Login</button>-->
-  <button onclick="window.location.href='admin.html'" class="nav-btn"><i class="fa-solid fa-shield-halved"></i> Admin</button>
+  <button onclick="show('login');toggleMenu()"><i class="fa-solid fa-shield-halved"></i> Admin Login</button>
   <button onclick="logout();toggleMenu()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
 </div>
 
-<!-- ===================================================
-     3. HORIZONTAL RIGHT-TO-LEFT CAROUSEL
-     (Apni photos 'images' folder me 1.jpg se 5.jpg naam se rakhein)
-=================================================== -->
+<!-- TICKER CAROUSEL -->
 <div class="ticker-section" id="tickerWrapper">
   <div class="ticker-track" id="tickerTrack">
-    <!-- Card 1 -->
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/1.jpg" alt="Batting Net Sessions">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/2.jpg" alt="Astro Turf Ground">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/3.jpg" alt="Fitness & Conditioning">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Fitness & Drills</span>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/4.jpg" alt="Pace & Spin Bowling Drills">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Bowling Drills</span>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/5.jpg" alt="Weekly Match Practice">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Weekly Matches</span>
-      </div>
-    </div>
-
-    <!-- DUPLICATE CARDS (Seamless endless loop maintain karne ke liye) -->
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/1.jpg" alt="Batting Net Sessions">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span>
-      </div>
+      <img src="images/1.jpg" alt="Batting Net Sessions">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span></div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/2.jpg" alt="Astro Turf Ground">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span>
-      </div>
+      <img src="images/2.jpg" alt="Astro Turf Ground">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span></div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/3.jpg" alt="Fitness & Conditioning">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Fitness Drills</span>
-      </div>
+      <img src="images/3.jpg" alt="Fitness & Conditioning">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Fitness & Drills</span></div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/4.jpg" alt="Pace & Spin Bowling Drills">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Bowling Drills</span>
-      </div>
+      <img src="images/4.jpg" alt="Pace & Spin Bowling Drills">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Bowling Drills</span></div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="/images/5.jpg" alt="Weekly Match Practice">
-      <div class="ticker-overlay">
-        <span><i class="fa-solid fa-expand"></i> Weekly Matches</span>
-      </div>
+      <img src="images/5.jpg" alt="Weekly Match Practice">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Weekly Matches</span></div>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-card" onclick="openImageModal(this)">
+      <img src="images/1.jpg" alt="Batting Net Sessions">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span></div>
+    </div>
+    <div class="ticker-card" onclick="openImageModal(this)">
+      <img src="images/2.jpg" alt="Astro Turf Ground">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span></div>
+    </div>
+    <div class="ticker-card" onclick="openImageModal(this)">
+      <img src="images/3.jpg" alt="Fitness & Conditioning">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Fitness Drills</span></div>
+    </div>
+    <div class="ticker-card" onclick="openImageModal(this)">
+      <img src="images/4.jpg" alt="Pace & Spin Bowling Drills">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Bowling Drills</span></div>
+    </div>
+    <div class="ticker-card" onclick="openImageModal(this)">
+      <img src="images/5.jpg" alt="Weekly Match Practice">
+      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Weekly Matches</span></div>
     </div>
   </div>
 </div>
 
-<!-- 4. HERO SECTION -->
+<!-- HERO SECTION -->
 <header class="hero" id="hero-section">
   <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Admissions Open 2026</div>
   <h1 class="hero-title">StepUp<br><span>Cricket Academy</span></h1>
@@ -827,7 +769,7 @@
   </div>
 </header>
 
-<!-- 5. HOME (FACILITIES) -->
+<!-- FACILITIES SECTION -->
 <section id="home">
   <div class="section-header">
     <h2>World-Class <span>Facilities</span></h2>
@@ -886,7 +828,7 @@
   </div>
 </section>
 
-<!-- 6. SIGNUP FORM -->
+<!-- SIGNUP FORM -->
 <section id="signup" class="hidden">
   <div class="section-header">
     <h2>Player <span>Registration</span></h2>
@@ -938,7 +880,7 @@
   </div>
 </section>
 
-<!-- 7. ADMIN LOGIN -->
+<!-- ADMIN LOGIN SECTION -->
 <section id="login" class="hidden">
   <div class="section-header">
     <h2>Admin <span>Login</span></h2>
@@ -956,11 +898,11 @@
       </div>
       <button type="submit" class="btn-submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
     </form>
-    <div id="loginMsg"></div>
+    <div id="loginMsg" style="margin-top: 15px; text-align: center; font-size: 0.9rem;"></div>
   </div>
 </section>
 
-<!-- 8. ADMIN DASHBOARD -->
+<!-- ADMIN DASHBOARD SECTION -->
 <section id="admin" class="hidden">
   <div class="section-header">
     <h2>Admin <span>Dashboard</span></h2>
@@ -986,7 +928,7 @@
   </div>
 </section>
 
-<!-- 9. IMAGE FULLSCREEN PREVIEW MODAL -->
+<!-- IMAGE FULLSCREEN PREVIEW MODAL -->
 <div id="imageLightbox" class="lightbox-modal" onclick="closeImageModal()">
   <div class="lightbox-content" onclick="event.stopPropagation()">
     <button class="lightbox-close" onclick="closeImageModal()"><i class="fa-solid fa-xmark"></i></button>
@@ -995,18 +937,15 @@
   </div>
 </div>
 
-<!-- 10. FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo"><i class="fa-solid fa-baseball-bat-ball"></i> StepUp Cricket Academy</div>
   <p>Gohri, Phaphamau, Prayagraj, Uttar Pradesh</p>
   <p class="footer-copy">© 2026 StepUp Cricket Academy. All Rights Reserved.</p>
 </footer>
 
-<!-- ===================================================
-     JAVASCRIPT LOGIC
-=================================================== -->
+<!-- JAVASCRIPT LOGIC -->
 <script>
-  // TAB NAVIGATION WITH AUTO-SCROLL & INPUT FOCUS
   function show(sectionId) {
     document.querySelectorAll('main, section').forEach(sec => sec.classList.add('hidden'));
     const target = document.getElementById(sectionId);
@@ -1016,7 +955,6 @@
     const activeBtn = document.getElementById('nav-' + sectionId);
     if (activeBtn) activeBtn.classList.add('active');
 
-    // Agar 'signup' (Join Now / Register) khula hai, to seedha form par scroll karein aur cursor focus karein
     if (sectionId === 'signup' && target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(() => {
@@ -1052,6 +990,38 @@
     alert("CSV exported.");
   }
 
+  // ADMIN LOGIN API HANDLER
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('adminEmail').value;
+    const password = document.getElementById('adminPass').value;
+    const msg = document.getElementById('loginMsg');
+
+    msg.style.color = '#f59e0b';
+    msg.textContent = "Verifying credentials...";
+
+    try {
+      const response = await fetch('/api/adminLogin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        msg.style.color = '#16a34a';
+        msg.textContent = "Login Successful! Loading dashboard...";
+        setTimeout(() => { show('admin'); }, 800);
+      } else {
+        msg.style.color = '#dc2626';
+        msg.textContent = data.message || "Invalid email or password.";
+      }
+    } catch (err) {
+      msg.style.color = '#dc2626';
+      msg.textContent = "Server connection error!";
+    }
+  });
+
   // IMAGE LIGHTBOX POPUP
   function openImageModal(cardElement) {
     const img = cardElement.querySelector('img');
@@ -1071,7 +1041,7 @@
     document.body.style.overflow = '';
   }
 
-  document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeImageModal();
   });
 
