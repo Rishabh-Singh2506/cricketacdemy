@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login | StepUp Cricket Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root { --bg-dark: #070d18; --bg-card: #0f172a; --accent: #f59e0b; --text-main: #f8fafc; --text-muted: #94a3b8; --border-color: rgba(255, 255, 255, 0.1); }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg-dark); color: var(--text-main); display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .form-wrapper { width: 100%; max-width: 440px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px; }
+    .section-header { text-align: center; margin-bottom: 25px; }
+    .section-header h2 { font-size: 2rem; font-weight: 800; }
+    .section-header h2 span { color: var(--accent); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: flex; align-items: center; gap: 8px; font-size: 0.85srem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+    .form-group label i { color: var(--accent); }
+    .form-group input { width: 100%; background: #080e1a; border: 1px solid var(--border-color); color: var(--text-main); padding: 12px 14px; border-radius: 8px; outline: none; }
+    .btn-submit { width: 100%; background: var(--accent); color: #000; font-weight: 700; padding: 14px; border-radius: 8px; border: none; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; }
+    #loginMsg { margin-top: 15px; text-align: center; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<div class="form-wrapper">
+  <div class="section-header">
+    <h2>Admin <span>Login</span></h2>
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Authorized personnel only</p>
+  </div>
+  <form id="adminLoginForm">
+    <div class="form-group">
+      <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+      <input id="adminEmail" type="email" placeholder="admin@stepupcricket.in" required>
+    </div>
+    <div class="form-group">
+      <label><i class="fa-solid fa-lock"></i> Password</label>
+      <input id="adminPass" type="password" placeholder="Enter password" required>
+    </div>
+    <button type="submit" class="btn-submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+  </form>
+  <div id="loginMsg"></div>
+</div>
+
+<script>
+  document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('adminEmail').value;
+    const password = document.getElementById('adminPass').value;
+    const msg = document.getElementById('loginMsg');
+
+    msg.style.color = '#f59e0b';
+    msg.textContent = "Logging in...";
+
+    try {
+      const response = await fetch('/api/adminLogin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        msg.style.color = '#16a34a';
+        msg.textContent = "Login Successful! Redirecting...";
+        setTimeout(() => { window.location.href = '/admin-dashboard.html'; }, 1000);
+      } else {
+        msg.style.color = '#dc2626';
+        msg.textContent = data.message || "Invalid credentials";
+      }
+    } catch (err) {
+      msg.style.color = '#dc2626';
+      msg.textContent = "Server connection error!";
+    }
+  });
+</script>
+</body>
+</html>
