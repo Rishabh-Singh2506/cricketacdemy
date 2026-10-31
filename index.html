@@ -171,12 +171,12 @@
       white-space: nowrap;
       user-select: none;
       cursor: grab;
-      scrollbar-width: none; /* Hide scrollbar for Firefox */
-      -ms-overflow-style: none; /* Hide scrollbar for IE */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
     .ticker-section::-webkit-scrollbar {
-      display: none; /* Hide scrollbar for Chrome/Safari */
+      display: none;
     }
 
     .ticker-section:active {
@@ -526,11 +526,12 @@
       border-radius: 8px;
       font-size: 0.95rem;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .form-group input:focus, .form-group select:focus {
       border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
     }
 
     .btn-submit {
@@ -727,13 +728,13 @@
 
 <!-- ===================================================
      3. HORIZONTAL RIGHT-TO-LEFT CAROUSEL
-     (Apni photos ke URLs yahan img src me lagayein)
+     (Apni photos 'images' folder me 1.jpg se 5.jpg naam se rakhein)
 =================================================== -->
 <div class="ticker-section" id="tickerWrapper">
   <div class="ticker-track" id="tickerTrack">
     <!-- Card 1 -->
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1000&q=80" alt="Batting Net Sessions">
+      <img src="/images/1.jpg" alt="Batting Net Sessions">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span>
       </div>
@@ -741,7 +742,7 @@
 
     <!-- Card 2 -->
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1531415074868-036b107e7758?auto=format&fit=crop&w=1000&q=80" alt="Astro Turf Ground">
+      <img src="/images/2.jpg" alt="Astro Turf Ground">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span>
       </div>
@@ -749,7 +750,7 @@
 
     <!-- Card 3 -->
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=1000&q=80" alt="Fitness & Conditioning">
+      <img src="/images/3.jpg" alt="Fitness & Conditioning">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Fitness & Drills</span>
       </div>
@@ -757,7 +758,7 @@
 
     <!-- Card 4 -->
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=1000&q=80" alt="Pace & Spin Bowling Drills">
+      <img src="/images/4.jpg" alt="Pace & Spin Bowling Drills">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Bowling Drills</span>
       </div>
@@ -765,7 +766,7 @@
 
     <!-- Card 5 -->
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1512719994953-eabf50895df7?auto=format&fit=crop&w=1000&q=80" alt="Weekly Match Practice">
+      <img src="/images/5.jpg" alt="Weekly Match Practice">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Weekly Matches</span>
       </div>
@@ -773,31 +774,31 @@
 
     <!-- DUPLICATE CARDS (Seamless endless loop maintain karne ke liye) -->
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1000&q=80" alt="Batting Net Sessions">
+      <img src="/images/1.jpg" alt="Batting Net Sessions">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span>
       </div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1531415074868-036b107e7758?auto=format&fit=crop&w=1000&q=80" alt="Astro Turf Ground">
+      <img src="/images/2.jpg" alt="Astro Turf Ground">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span>
       </div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=1000&q=80" alt="Fitness & Conditioning">
+      <img src="/images/3.jpg" alt="Fitness & Conditioning">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Fitness Drills</span>
       </div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972?auto=format&fit=crop&w=1000&q=80" alt="Pace & Spin Bowling Drills">
+      <img src="/images/4.jpg" alt="Pace & Spin Bowling Drills">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Bowling Drills</span>
       </div>
     </div>
     <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="https://images.unsplash.com/photo-1512719994953-eabf50895df7?auto=format&fit=crop&w=1000&q=80" alt="Weekly Match Practice">
+      <img src="/images/5.jpg" alt="Weekly Match Practice">
       <div class="ticker-overlay">
         <span><i class="fa-solid fa-expand"></i> Weekly Matches</span>
       </div>
@@ -998,12 +999,13 @@
   <div class="footer-logo"><i class="fa-solid fa-baseball-bat-ball"></i> StepUp Cricket Academy</div>
   <p>Gohri, Phaphamau, Prayagraj, Uttar Pradesh</p>
   <p class="footer-copy">© 2026 StepUp Cricket Academy. All Rights Reserved.</p>
-  </footer>
-  <!-- ===================================================
+</footer>
+
+<!-- ===================================================
      JAVASCRIPT LOGIC
 =================================================== -->
 <script>
-  // TAB NAVIGATION
+  // TAB NAVIGATION WITH AUTO-SCROLL & INPUT FOCUS
   function show(sectionId) {
     document.querySelectorAll('main, section').forEach(sec => sec.classList.add('hidden'));
     const target = document.getElementById(sectionId);
@@ -1013,7 +1015,22 @@
     const activeBtn = document.getElementById('nav-' + sectionId);
     if (activeBtn) activeBtn.classList.add('active');
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Agar 'signup' (Join Now / Register) khula hai, to seedha form par scroll karein aur cursor focus karein
+    if (sectionId === 'signup' && target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        const nameInput = document.getElementById('playerName');
+        if (nameInput) nameInput.focus({ preventScroll: true });
+      }, 450);
+    } else if (sectionId === 'login' && target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        const emailInput = document.getElementById('adminEmail');
+        if (emailInput) emailInput.focus({ preventScroll: true });
+      }, 450);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   function toggleMenu() {
