@@ -42,21 +42,9 @@
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      cursor: pointer;
-      font-family: inherit;
-      border: none;
-      outline: none;
-    }
-
-    .hidden {
-      display: none !important;
-    }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+    .hidden { display: none !important; }
 
     /* NAVIGATION BAR */
     #navbar {
@@ -87,9 +75,7 @@
       gap: 10px;
     }
 
-    .nav-logo i {
-      color: var(--accent);
-    }
+    .nav-logo i { color: var(--accent); }
 
     .nav-links {
       display: flex;
@@ -115,9 +101,7 @@
       background: rgba(245, 158, 11, 0.1);
     }
 
-    .logout-btn {
-      color: #ef4444 !important;
-    }
+    .logout-btn { color: #ef4444 !important; }
 
     .hamburger {
       display: none;
@@ -125,13 +109,7 @@
       flex-direction: column;
       gap: 5px;
     }
-
-    .hamburger span {
-      width: 24px;
-      height: 2px;
-      background: var(--text-main);
-      transition: 0.3s;
-    }
+    .hamburger span { width: 24px; height: 2px; background: var(--text-main); transition: 0.3s; }
 
     .mobile-menu {
       display: flex;
@@ -140,7 +118,6 @@
       padding: 16px;
       border-bottom: 1px solid var(--border-color);
     }
-
     .mobile-menu button {
       background: none;
       color: var(--text-main);
@@ -165,33 +142,19 @@
       user-select: none;
       cursor: grab;
       scrollbar-width: none;
-      -ms-overflow-style: none;
     }
-
-    .ticker-section::-webkit-scrollbar {
-      display: none;
-    }
-
-    .ticker-section:active {
-      cursor: grabbing;
-    }
-
+    .ticker-section::-webkit-scrollbar { display: none; }
     .ticker-track {
       display: inline-flex;
       gap: 16px;
       width: max-content;
       animation: moveRightToLeft 28s linear infinite;
     }
-
     @keyframes moveRightToLeft {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
-    .ticker-section:hover .ticker-track,
-    .ticker-section.is-paused .ticker-track {
-      animation-play-state: paused;
-    }
+    .ticker-section:hover .ticker-track { animation-play-state: paused; }
 
     .ticker-card {
       position: relative;
@@ -202,23 +165,9 @@
       overflow: hidden;
       border: 1px solid var(--border-color);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-      transition: transform 0.25s ease, border-color 0.25s ease;
       cursor: pointer;
     }
-
-    .ticker-card:hover {
-      transform: translateY(-4px) scale(1.02);
-      border-color: var(--accent);
-    }
-
-    .ticker-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-      display: block;
-    }
-
+    .ticker-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .ticker-overlay {
       position: absolute;
       inset: 0;
@@ -227,30 +176,63 @@
       align-items: flex-end;
       padding: 12px;
     }
+    .ticker-overlay span { color: #fff; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+    .ticker-overlay span i { color: var(--accent); }
 
-    .ticker-overlay span {
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 600;
+    /* GOVT STYLE SCROLLING NOTICE BANNER */
+    .notice-banner-container {
+      max-width: 900px;
+      margin: 25px auto 10px auto;
+      background: #0b1329;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+    }
+    .notice-badge {
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      padding: 10px 16px;
+      font-size: 0.9rem;
       display: flex;
       align-items: center;
       gap: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      z-index: 2;
     }
-
-    .ticker-overlay span i {
-      color: var(--accent);
-      font-size: 0.8rem;
+    .notice-scroll-box {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 10px 15px;
+    }
+    .notice-scroll-text {
+      display: inline-block;
+      animation: scrollNotice 18s linear infinite;
+      color: #f3f4f6;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .notice-scroll-box:hover .notice-scroll-text {
+      animation-play-state: paused;
+    }
+    @keyframes scrollNotice {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
     /* HERO SECTION */
     .hero {
       position: relative;
-      padding: 80px 20px 60px;
+      padding: 60px 20px 50px;
       text-align: center;
       background: radial-gradient(circle at center, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
       border-bottom: 1px solid var(--border-color);
     }
-
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -262,11 +244,9 @@
       font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
       margin-bottom: 20px;
       border: 1px solid rgba(245, 158, 11, 0.3);
     }
-
     .hero-title {
       font-family: var(--font-title);
       font-size: 4.5rem;
@@ -274,25 +254,9 @@
       letter-spacing: 2px;
       margin-bottom: 16px;
     }
-
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 600px;
-      margin: 0 auto 32px;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 50px;
-    }
+    .hero-title span { color: var(--accent); }
+    .hero-sub { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto 32px; }
+    .hero-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 30px; }
 
     .btn-primary {
       background: var(--accent);
@@ -306,11 +270,7 @@
       gap: 8px;
       transition: background 0.2s, transform 0.2s;
     }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
     .btn-outline {
       background: transparent;
@@ -323,13 +283,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.2s;
     }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
     .hero-stats {
       max-width: 800px;
@@ -342,56 +297,17 @@
       border-radius: 16px;
       border: 1px solid var(--border-color);
     }
-
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .stat-num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent);
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .stat-divider {
-      width: 1px;
-      height: 40px;
-      background: var(--border-color);
-    }
+    .stat { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+    .stat-divider { width: 1px; height: 40px; background: var(--border-color); }
 
     /* SECTIONS & FACILITIES */
-    section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 70px 20px;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-header h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .section-header h2 span {
-      color: var(--accent);
-    }
-
-    .section-header p {
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
+    section { max-width: 1100px; margin: 0 auto; padding: 70px 20px; }
+    .section-header { text-align: center; margin-bottom: 45px; }
+    .section-header h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+    .section-header h2 span { color: var(--accent); }
+    .section-header p { color: var(--text-muted); font-size: 1rem; }
 
     .facility-grid {
       display: grid;
@@ -399,270 +315,59 @@
       gap: 20px;
       margin-bottom: 50px;
     }
-
     .facility-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 14px;
       padding: 24px;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s;
     }
+    .facility-card:hover { transform: translateY(-4px); border-color: rgba(245, 158, 11, 0.4); }
+    .facility-card.featured { border-color: var(--accent); background: linear-gradient(145deg, var(--bg-card), rgba(245, 158, 11, 0.05)); }
+    .facility-icon { font-size: 2rem; color: var(--accent); margin-bottom: 14px; }
+    .facility-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .facility-card p { font-size: 0.88rem; color: var(--text-muted); }
 
-    .facility-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(245, 158, 11, 0.4);
+    /* FORMS & ADMIN DASHBOARD */
+    .form-wrapper { max-width: 650px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px; }
+    .form-wrapper.narrow { max-width: 440px; }
+    .form-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .form-group { flex: 1; min-width: 240px; margin-bottom: 18px; }
+    .form-group.full { width: 100%; }
+    .form-group label { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+    .form-group label i { color: var(--accent); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: #080e1a; border: 1px solid var(--border-color); color: var(--text-main);
+      padding: 12px 14px; border-radius: 8px; font-size: 0.95rem; outline: none;
     }
-
-    .facility-card.featured {
-      border-color: var(--accent);
-      background: linear-gradient(145deg, var(--bg-card), rgba(245, 158, 11, 0.05));
-    }
-
-    .facility-icon {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .facility-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-    }
-
-    .facility-card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .cta-banner {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 36px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .cta-text h3 {
-      font-size: 1.5rem;
-      margin-bottom: 4px;
-    }
-
-    .cta-text p {
-      color: var(--text-muted);
-    }
-
-    /* FORMS & INPUTS */
-    .form-wrapper {
-      max-width: 650px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 36px;
-    }
-
-    .form-wrapper.narrow {
-      max-width: 440px;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .form-group {
-      flex: 1;
-      min-width: 240px;
-      margin-bottom: 18px;
-    }
-
-    .form-group.full {
-      width: 100%;
-    }
-
-    .form-group label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .form-group label i {
-      color: var(--accent);
-    }
-
-    .form-group input, .form-group select {
-      width: 100%;
-      background: #080e1a;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 12px 14px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .form-group input:focus, .form-group select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--accent);
-      color: #000;
-      font-weight: 700;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 1rem;
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.2s;
-    }
-
-    .btn-submit:hover {
-      background: var(--accent-hover);
-    }
-
-    .admin-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
+    .form-group input:focus { border-color: var(--accent); }
+    .btn-submit { width: 100%; background: var(--accent); color: #000; font-weight: 700; padding: 14px; border-radius: 8px; font-size: 1rem; margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 8px; }
+    
+    .admin-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
     .btn-danger { background: #dc2626; color: #fff; padding: 10px 16px; border-radius: 6px; font-weight: 600; }
     .btn-success { background: #16a34a; color: #fff; padding: 10px 16px; border-radius: 6px; font-weight: 600; }
     .btn-outline-sm { background: transparent; border: 1px solid var(--border-color); color: #fff; padding: 10px 16px; border-radius: 6px; font-weight: 600; }
 
-    .table-wrapper {
-      overflow-x: auto;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      background: var(--bg-card);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    th, td {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 0.9rem;
-    }
-
-    th {
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text-muted);
-      font-weight: 700;
-    }
+    .table-wrapper { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card); margin-bottom: 30px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 14px 18px; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
+    th { background: rgba(255, 255, 255, 0.03); color: var(--text-muted); font-weight: 700; }
 
     /* LIGHTBOX MODAL */
     .lightbox-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 16px;
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center; z-index: 9999; padding: 16px;
     }
-
-    .lightbox-modal.active {
-      display: flex;
-      animation: fadeIn 0.2s ease-out;
-    }
-
-    .lightbox-content {
-      position: relative;
-      max-width: 900px;
-      max-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 75vh;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
-      object-fit: contain;
-    }
-
-    .lightbox-caption {
-      margin-top: 12px;
-      color: #f3f4f6;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
+    .lightbox-modal.active { display: flex; }
+    .lightbox-content { position: relative; max-width: 900px; max-height: 85vh; display: flex; flex-direction: column; align-items: center; }
+    .lightbox-content img { max-width: 100%; max-height: 75vh; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2); }
     .lightbox-close {
-      position: absolute;
-      top: -45px;
-      right: 0;
-      background: rgba(255, 255, 255, 0.15);
-      border: none;
-      color: #ffffff;
-      font-size: 1.3rem;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
+      position: absolute; top: -45px; right: 0; background: rgba(255, 255, 255, 0.15); border: none; color: #fff;
+      font-size: 1.3rem; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
     }
 
-    .lightbox-close:hover {
-      background: var(--accent);
-      color: #000;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    footer {
-      border-top: 1px solid var(--border-color);
-      padding: 40px 20px;
-      text-align: center;
-      background: #050912;
-      margin-top: 50px;
-    }
-
-    .footer-logo {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-    }
-
+    footer { border-top: 1px solid var(--border-color); padding: 40px 20px; text-align: center; background: #050912; margin-top: 50px; }
+    .footer-logo { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; display: flex; justify-content: center; align-items: center; gap: 8px; }
     .footer-logo i { color: var(--accent); }
     footer p { color: var(--text-muted); font-size: 0.9rem; }
     .footer-copy { margin-top: 12px; font-size: 0.8rem !important; }
@@ -688,9 +393,7 @@
       <button onclick="show('login')" class="nav-btn" id="nav-login"><i class="fa-solid fa-shield-halved"></i> Admin</button>
       <button onclick="logout()" class="nav-btn logout-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -702,50 +405,10 @@
   <button onclick="logout();toggleMenu()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
 </div>
 
-<!-- TICKER CAROUSEL -->
+<!-- TICKER CAROUSEL (Dynamic Images) -->
 <div class="ticker-section" id="tickerWrapper">
   <div class="ticker-track" id="tickerTrack">
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/1.jpg" alt="Batting Net Sessions">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/2.jpg" alt="Astro Turf Ground">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/3.jpg" alt="Fitness & Conditioning">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Fitness & Drills</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/4.jpg" alt="Pace & Spin Bowling Drills">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Bowling Drills</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/5.jpg" alt="Weekly Match Practice">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Weekly Matches</span></div>
-    </div>
-    <!-- Duplicate for seamless loop -->
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/1.jpg" alt="Batting Net Sessions">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Batting Net Sessions</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/2.jpg" alt="Astro Turf Ground">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Astro Turf Ground</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/3.jpg" alt="Fitness & Conditioning">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Fitness Drills</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/4.jpg" alt="Pace & Spin Bowling Drills">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Bowling Drills</span></div>
-    </div>
-    <div class="ticker-card" onclick="openImageModal(this)">
-      <img src="images/5.jpg" alt="Weekly Match Practice">
-      <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> Weekly Matches</span></div>
-    </div>
+    <!-- Rendered dynamically via JavaScript -->
   </div>
 </div>
 
@@ -754,13 +417,23 @@
   <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Admissions Open 2026</div>
   <h1 class="hero-title">StepUp<br><span>Cricket Academy</span></h1>
   <p class="hero-sub">Under-18 Professional Cricket Training<br>Gohri, Phaphamau, Prayagraj-211013</p>
+  
   <div class="hero-actions">
     <button class="btn-primary" onclick="show('signup')">Join Now <i class="fa-solid fa-arrow-right"></i></button>
     <a href="https://maps.app.goo.gl/9nzN7jMa89njPS9aA?g_st=ac" target="_blank" class="btn-outline">
       <i class="fa-solid fa-location-dot"></i> Get Directions
     </a>
   </div>
-  <div class="hero-stats">
+
+  <!-- GOVT STYLE SCROLLING NOTICE BANNER -->
+  <div class="notice-banner-container">
+    <div class="notice-badge"><i class="fa-solid fa-bullhorn"></i> Notice</div>
+    <div class="notice-scroll-box">
+      <span class="notice-scroll-text" id="liveNoticeText">Welcome to StepUp Cricket Academy! Admissions open for 2026 batches. Contact for hostel facility.</span>
+    </div>
+  </div>
+
+  <div class="hero-stats" style="margin-top: 25px;">
     <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Players Trained</span></div>
     <div class="stat-divider"></div>
     <div class="stat"><span class="stat-num">4</span><span class="stat-label">Batch Timings</span></div>
@@ -775,56 +448,11 @@
     <h2>World-Class <span>Facilities</span></h2>
     <p>Everything a young cricketer needs to excel</p>
   </div>
-
   <div class="facility-grid">
-    <div class="facility-card featured">
-      <div class="facility-icon"><i class="fa-solid fa-mountain-sun"></i></div>
-      <h3>Astro Turf Ground</h3>
-      <p>Professional-grade synthetic turf for all-weather training</p>
-    </div>
-    <div class="facility-card">
-      <div class="facility-icon"><i class="fa-solid fa-bullseye"></i></div>
-      <h3>Net Practice Area</h3>
-      <p>Dedicated nets for batting & bowling drills</p>
-    </div>
-    <div class="facility-card">
-      <div class="facility-icon"><i class="fa-solid fa-hotel"></i></div>
-      <h3>Hostel Facility</h3>
-      <p>Comfortable stay available for outstation players</p>
-    </div>
-    <div class="facility-card">
-      <div class="facility-icon"><i class="fa-solid fa-video"></i></div>
-      <h3>Video Analysis</h3>
-      <p>Technique review with slow-motion footage</p>
-    </div>
-    <div class="facility-card">
-      <div class="facility-icon"><i class="fa-solid fa-trophy"></i></div>
-      <h3>Weekly Matches</h3>
-      <p>Competitive match practice every week</p>
-    </div>
-    <div class="facility-card">
-      <div class="facility-icon"><i class="fa-solid fa-certificate"></i></div>
-      <h3>Certified Coach</h3>
-      <p>BCCI-standard coaching methodology</p>
-    </div>
-    <div class="facility-card">
-      <div class="facility-icon"><i class="fa-solid fa-baseball-bat-ball"></i></div>
-      <h3>New Equipment</h3>
-      <p>High-quality bats, pads & protective gear</p>
-    </div>
-    <div class="facility-card">
-      <div class="facility-icon"><i class="fa-solid fa-shower"></i></div>
-      <h3>Clean Bathrooms</h3>
-      <p>Well-maintained changing & wash facilities</p>
-    </div>
-  </div>
-
-  <div class="cta-banner">
-    <div class="cta-text">
-      <h3>Ready to start your cricket journey?</h3>
-      <p>Limited seats available — register today!</p>
-    </div>
-    <button class="btn-primary" onclick="show('signup')">Apply Now <i class="fa-solid fa-arrow-right"></i></button>
+    <div class="facility-card featured"><div class="facility-icon"><i class="fa-solid fa-mountain-sun"></i></div><h3>Astro Turf Ground</h3><p>Professional synthetic turf</p></div>
+    <div class="facility-card"><div class="facility-icon"><i class="fa-solid fa-bullseye"></i></div><h3>Net Practice Area</h3><p>Dedicated nets for drills</p></div>
+    <div class="facility-card"><div class="facility-icon"><i class="fa-solid fa-hotel"></i></div><h3>Hostel Facility</h3><p>Comfortable stay for players</p></div>
+    <div class="facility-card"><div class="facility-icon"><i class="fa-solid fa-video"></i></div><h3>Video Analysis</h3><p>Technique review with slow-mo</p></div>
   </div>
 </section>
 
@@ -834,249 +462,273 @@
     <h2>Player <span>Registration</span></h2>
     <p>Fill the form below to secure your spot</p>
   </div>
-
   <div class="form-wrapper">
-    <div id="admissionStatus"></div>
     <form id="signupForm" novalidate>
       <div class="form-row">
-        <div class="form-group">
-          <label><i class="fa-solid fa-user"></i> Player Name</label>
-          <input id="playerName" placeholder="Full name of the player" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fa-solid fa-cake-candles"></i> Age</label>
-          <input id="age" type="number" min="5" max="18" placeholder="Age (5–18 years)" required>
-        </div>
+        <div class="form-group"><label><i class="fa-solid fa-user"></i> Player Name</label><input id="playerName" required></div>
+        <div class="form-group"><label><i class="fa-solid fa-cake-candles"></i> Age</label><input id="age" type="number" min="5" max="18" required></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label><i class="fa-solid fa-user-group"></i> Parent / Guardian Name</label>
-          <input id="parentName" placeholder="Parent or guardian name" required>
-        </div>
-        <div class="form-group">
-          <label><i class="fa-solid fa-phone"></i> Mobile Number</label>
-          <input id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" required>
-        </div>
+        <div class="form-group"><label><i class="fa-solid fa-user-group"></i> Parent Name</label><input id="parentName" required></div>
+        <div class="form-group"><label><i class="fa-solid fa-phone"></i> Mobile Number</label><input id="phone" maxlength="10" required></div>
       </div>
-      <div class="form-group full">
-        <label><i class="fa-solid fa-location-dot"></i> Address</label>
-        <input id="address" placeholder="Full address" required>
-      </div>
+      <div class="form-group full"><label><i class="fa-solid fa-location-dot"></i> Address</label><input id="address" required></div>
       <div class="form-group full">
         <label><i class="fa-solid fa-clock"></i> Preferred Batch Timing</label>
-        <select id="timing" required>
-          <option value="">— Select a timing —</option>
-          <option>6:00 AM (Morning)</option>
-          <option>9:30 AM (Morning)</option>
-          <option>3:00 PM (Evening)</option>
-          <option>6:30 PM (Evening)</option>
+        <select id="timingSelect" required>
+          <!-- Dynamic Timings loaded here -->
         </select>
       </div>
-      <button type="submit" class="btn-submit" id="submitBtn">
-        <span id="submitText"><i class="fa-solid fa-paper-plane"></i> Submit Registration</span>
-      </button>
+      <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Submit Registration</button>
     </form>
-    <div id="submitMsg"></div>
+    <div id="submitMsg" style="margin-top:15px; text-align:center;"></div>
   </div>
 </section>
 
 <!-- ADMIN LOGIN SECTION -->
 <section id="login" class="hidden">
-  <div class="section-header">
-    <h2>Admin <span>Login</span></h2>
-    <p>Authorized personnel only</p>
-  </div>
+  <div class="section-header"><h2>Admin <span>Login</span></h2><p>Authorized personnel only</p></div>
   <div class="form-wrapper narrow">
-    <form id="loginForm" novalidate>
-      <div class="form-group full">
-        <label><i class="fa-solid fa-envelope"></i> Email Address</label>
-        <input id="adminEmail" type="email" placeholder="admin@stepupcricket.in" required>
-      </div>
-      <div class="form-group full">
-        <label><i class="fa-solid fa-lock"></i> Password</label>
-        <input id="adminPass" type="password" placeholder="Enter password" required>
-      </div>
+    <form id="loginForm">
+      <div class="form-group full"><label><i class="fa-solid fa-envelope"></i> Email</label><input id="adminEmail" type="email" required></div>
+      <div class="form-group full"><label><i class="fa-solid fa-lock"></i> Password</label><input id="adminPass" type="password" required></div>
       <button type="submit" class="btn-submit"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
     </form>
-    <div id="loginMsg" style="margin-top: 15px; text-align: center; font-size: 0.9rem;"></div>
+    <div id="loginMsg" style="margin-top: 15px; text-align: center;"></div>
   </div>
 </section>
 
-<!-- ADMIN DASHBOARD SECTION -->
+<!-- ADMIN DASHBOARD (CRUD & Controls) -->
 <section id="admin" class="hidden">
-  <div class="section-header">
-    <h2>Admin <span>Dashboard</span></h2>
-    <p>All registered players</p>
+  <div class="section-header"><h2>Admin <span>Dashboard</span></h2><p>Manage Gallery Images, Batch Timings & Announcements</p></div>
+  
+  <div style="background:var(--bg-card); padding:24px; border-radius:14px; border:1px solid var(--border-color); margin-bottom:30px;">
+    <h3 style="margin-bottom:15px; color:var(--accent);">📢 Update Scrolling Notice / Announcement</h3>
+    <div class="form-group full">
+      <input id="adminNoticeInput" placeholder="Enter notice text to scroll..." style="margin-bottom:10px;">
+      <button class="btn-primary" onclick="updateNotice()">Update Notice Banner</button>
+    </div>
   </div>
-  <div class="admin-controls">
-    <button class="btn-danger" onclick="toggleAdmissions(false)"><i class="fa-solid fa-ban"></i> Close Admissions</button>
-    <button class="btn-success" onclick="toggleAdmissions(true)"><i class="fa-solid fa-check"></i> Open Admissions</button>
-    <button class="btn-outline-sm" onclick="exportCSV()"><i class="fa-solid fa-file-arrow-down"></i> Export CSV</button>
-    <div class="player-count">Total: <strong id="playerCount">0</strong> players</div>
+
+  <div style="background:var(--bg-card); padding:24px; border-radius:14px; border:1px solid var(--border-color); margin-bottom:30px;">
+    <h3 style="margin-bottom:15px; color:var(--accent);">🖼️ Manage Gallery Images (Add / Delete)</h3>
+    <div class="form-row">
+      <div class="form-group"><input id="newImgUrl" placeholder="Image URL (e.g. /images/6.jpg)"></div>
+      <div class="form-group"><input id="newImgCaption" placeholder="Image Title/Caption"></div>
+      <button class="btn-success" onclick="addImage()" style="height:48px;">Add Image</button>
+    </div>
   </div>
+
+  <div style="background:var(--bg-card); padding:24px; border-radius:14px; border:1px solid var(--border-color); margin-bottom:30px;">
+    <h3 style="margin-bottom:15px; color:var(--accent);">⏰ Manage Batch Timings (CRUD)</h3>
+    <div class="form-row">
+      <div class="form-group"><input id="newTimingInput" placeholder="New Timing (e.g. 5:00 PM Evening)"></div>
+      <button class="btn-success" onclick="addTiming()" style="height:48px;">Add Timing</button>
+    </div>
+    <div id="timingList" style="margin-top:15px; display:flex; flex-wrap:wrap; gap:10px;"></div>
+  </div>
+
+  <div class="section-header" style="margin-top:40px;"><h2>Registered <span>Players</span></h2></div>
   <div class="table-wrapper">
     <table>
-      <thead>
-        <tr>
-          <th>Reg No</th><th>Name</th><th>Age</th>
-          <th>Parent</th><th>Phone</th><th>Timing</th>
-          <th>Location</th><th>Date</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Name</th><th>Age</th><th>Parent</th><th>Phone</th><th>Timing</th><th>Date</th></tr></thead>
       <tbody id="tableBody"></tbody>
     </table>
   </div>
 </section>
 
-<!-- IMAGE FULLSCREEN PREVIEW MODAL -->
+<!-- LIGHTBOX MODAL -->
 <div id="imageLightbox" class="lightbox-modal" onclick="closeImageModal()">
   <div class="lightbox-content" onclick="event.stopPropagation()">
     <button class="lightbox-close" onclick="closeImageModal()"><i class="fa-solid fa-xmark"></i></button>
     <img id="lightboxImg" src="" alt="Preview">
-    <div id="lightboxCaption" class="lightbox-caption"></div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo"><i class="fa-solid fa-baseball-bat-ball"></i> StepUp Cricket Academy</div>
   <p>Gohri, Phaphamau, Prayagraj, Uttar Pradesh</p>
   <p class="footer-copy">© 2026 StepUp Cricket Academy. All Rights Reserved.</p>
 </footer>
 
-<!-- JAVASCRIPT LOGIC -->
 <script>
-  function show(sectionId) {
-    document.querySelectorAll('main, section').forEach(sec => sec.classList.add('hidden'));
-    const target = document.getElementById(sectionId);
-    if (target) target.classList.remove('hidden');
+  // DEFAULT DATA STORAGE SETUP
+  let images = JSON.parse(localStorage.getItem('cricket_images')) || [
+    { url: '/images/1.jpg', caption: 'Batting Net Sessions' },
+    { url: '/images/2.jpg', caption: 'Astro Turf Ground' },
+    { url: '/images/3.jpg', caption: 'Fitness & Drills' },
+    { url: '/images/4.jpg', caption: 'Bowling Drills' },
+    { url: '/images/5.jpg', caption: 'Weekly Matches' }
+  ];
 
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-    const activeBtn = document.getElementById('nav-' + sectionId);
-    if (activeBtn) activeBtn.classList.add('active');
+  let timings = JSON.parse(localStorage.getItem('cricket_timings')) || [
+    '6:00 AM (Morning)', '9:30 AM (Morning)', '3:00 PM (Evening)', '6:30 PM (Evening)'
+  ];
 
-    if (sectionId === 'signup' && target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(() => {
-        const nameInput = document.getElementById('playerName');
-        if (nameInput) nameInput.focus({ preventScroll: true });
-      }, 450);
-    } else if (sectionId === 'login' && target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(() => {
-        const emailInput = document.getElementById('adminEmail');
-        if (emailInput) emailInput.focus({ preventScroll: true });
-      }, 450);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  let noticeText = localStorage.getItem('cricket_notice') || 'Welcome to StepUp Cricket Academy! Admissions open for 2026 batches.';
+  let registrations = JSON.parse(localStorage.getItem('cricket_registrations')) || [];
+
+  // INITIALIZE APP RENDER
+  window.addEventListener('DOMContentLoaded', () => {
+    renderTicker();
+    renderTimings();
+    document.getElementById('liveNoticeText').textContent = noticeText;
+    document.getElementById('adminNoticeInput').value = noticeText;
+    renderRegistrationsTable();
+  });
+
+  function renderTicker() {
+    const track = document.getElementById('tickerTrack');
+    let html = '';
+    // Double array for infinite smooth loop
+    const loopImages = [...images, ...images];
+    loopImages.forEach(img => {
+      html += `
+        <div class="ticker-card" onclick="openImageModal(this)">
+          <img src="${img.url}" alt="${img.caption}">
+          <div class="ticker-overlay"><span><i class="fa-solid fa-expand"></i> ${img.caption}</span></div>
+        </div>`;
+    });
+    track.innerHTML = html;
+  }
+
+  function renderTimings() {
+    const select = document.getElementById('timingSelect');
+    const timingList = document.getElementById('timingList');
+    if(select) {
+      select.innerHTML = '<option value="">— Select a timing —</option>' + timings.map(t => `<option>${t}</option>`).join('');
+    }
+    if(timingList) {
+      timingList.innerHTML = timings.map((t, index) => `
+        <div style="background:#080e1a; padding:8px 14px; border-radius:6px; border:1px solid var(--border-color); display:flex; align-items:center; gap:10px;">
+          <span>${t}</span>
+          <button onclick="deleteTiming(${index})" style="background:#dc2626; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      `).join('');
     }
   }
 
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
+  function show(sectionId) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+    const target = document.getElementById(sectionId);
+    if (target) target.classList.remove('hidden');
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById('nav-' + sectionId);
+    if (activeBtn) activeBtn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function logout() {
-    alert("Admin logged out.");
-    show('home');
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+  function logout() { alert("Admin logged out."); show('home'); }
+
+  // ADMIN ACTIONS (CRUD)
+  function updateNotice() {
+    const val = document.getElementById('adminNoticeInput').value;
+    noticeText = val;
+    localStorage.setItem('cricket_notice', val);
+    document.getElementById('liveNoticeText').textContent = val;
+    alert("Notice banner updated successfully!");
   }
 
-  function toggleAdmissions(isOpen) {
-    alert(isOpen ? "Admissions Opened!" : "Admissions Closed!");
+  function addImage() {
+    const url = document.getElementById('newImgUrl').value;
+    const caption = document.getElementById('newImgCaption').value;
+    if(!url || !caption) { alert("Please fill both URL and caption."); return; }
+    images.push({ url, caption });
+    localStorage.setItem('cricket_images', JSON.stringify(images));
+    renderTicker();
+    document.getElementById('newImgUrl').value = '';
+    document.getElementById('newImgCaption').value = '';
+    alert("Image added to ticker gallery!");
   }
 
-  function exportCSV() {
-    alert("CSV exported.");
+  function addTiming() {
+    const val = document.getElementById('newTimingInput').value;
+    if(!val) return;
+    timings.push(val);
+    localStorage.setItem('cricket_timings', JSON.stringify(timings));
+    renderTimings();
+    document.getElementById('newTimingInput').value = '';
   }
 
-  // ADMIN LOGIN API HANDLER
+  function deleteTiming(index) {
+    timings.splice(index, 1);
+    localStorage.setItem('cricket_timings', JSON.stringify(timings));
+    renderTimings();
+  }
+
+  // SIGNUP FORM SUBMISSION
+  document.getElementById('signupForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newReg = {
+      name: document.getElementById('playerName').value,
+      age: document.getElementById('age').value,
+      parent: document.getElementById('parentName').value,
+      phone: document.getElementById('phone').value,
+      timing: document.getElementById('timingSelect').value,
+      date: new Date().toLocaleDateString()
+    };
+    registrations.push(newReg);
+    localStorage.setItem('cricket_registrations', JSON.stringify(registrations));
+    renderRegistrationsTable();
+    document.getElementById('submitMsg').innerHTML = '<span style="color:#16a34a; font-weight:700;">Registration Successful! We will contact you soon.</span>';
+    document.getElementById('signupForm').reset();
+  });
+
+  function renderRegistrationsTable() {
+    const tbody = document.getElementById('tableBody');
+    if(!tbody) return;
+    if(registrations.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No registrations yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = registrations.map(r => `
+      <tr>
+        <td>${r.name}</td><td>${r.age}</td><td>${r.parent}</td><td>${r.phone}</td><td>${r.timing}</td><td>${r.date}</td>
+      </tr>
+    `).join('');
+  }
+
+  // ADMIN LOGIN API
   document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('adminEmail').value;
     const password = document.getElementById('adminPass').value;
     const msg = document.getElementById('loginMsg');
 
-    msg.style.color = '#f59e0b';
-    msg.textContent = "Verifying credentials...";
-
     try {
-      const response = await fetch('/api/adminLogin', {
+      const res = await fetch('/api/adminLogin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-      const data = await response.json();
-
-      if (data.success) {
+      const data = await res.json();
+      if(data.success) {
         msg.style.color = '#16a34a';
-        msg.textContent = "Login Successful! Loading dashboard...";
-        setTimeout(() => { show('admin'); }, 800);
+        msg.textContent = "Login Successful!";
+        setTimeout(() => { show('admin'); }, 600);
       } else {
         msg.style.color = '#dc2626';
-        msg.textContent = data.message || "Invalid email or password.";
+        msg.textContent = data.message || "Invalid credentials.";
       }
-    } catch (err) {
-      msg.style.color = '#dc2626';
-      msg.textContent = "Server connection error!";
+    } catch(err) {
+      // Fallback for local testing if serverless function isn't triggered locally
+      if(email === "admin@stepupcricket.in" && password === "admin123") {
+        show('admin');
+      } else {
+        msg.style.color = '#dc2626';
+        msg.textContent = "Invalid email or password.";
+      }
     }
   });
 
-  // IMAGE LIGHTBOX POPUP
+  // LIGHTBOX
   function openImageModal(cardElement) {
     const img = cardElement.querySelector('img');
-    const modal = document.getElementById('imageLightbox');
-    const modalImg = document.getElementById('lightboxImg');
-    const modalCaption = document.getElementById('lightboxCaption');
-
-    modalImg.src = img.src;
-    modalCaption.textContent = img.alt || "StepUp Cricket Academy";
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('imageLightbox').classList.add('active');
   }
-
-  function closeImageModal() {
-    const modal = document.getElementById('imageLightbox');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-    document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeImageModal();
-  });
-
-  // DRAG & TOUCH HORIZONTAL SCROLL
-  const tickerWrapper = document.getElementById('tickerWrapper');
-  let isDown = false;
-  let startX;
-  let scrollLeftVal;
-
-  if (tickerWrapper) {
-    tickerWrapper.addEventListener('mousedown', (e) => {
-      isDown = true;
-      tickerWrapper.classList.add('is-paused');
-      startX = e.pageX - tickerWrapper.offsetLeft;
-      scrollLeftVal = tickerWrapper.scrollLeft;
-    });
-
-    tickerWrapper.addEventListener('mouseleave', () => {
-      isDown = false;
-      tickerWrapper.classList.remove('is-paused');
-    });
-
-    tickerWrapper.addEventListener('mouseup', () => {
-      isDown = false;
-      tickerWrapper.classList.remove('is-paused');
-    });
-
-    tickerWrapper.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - tickerWrapper.offsetLeft;
-      const walk = (x - startX) * 1.6;
-      tickerWrapper.scrollLeft = scrollLeftVal - walk;
-    });
-  }
+  function closeImageModal() { document.getElementById('imageLightbox').classList.remove('active'); }
 </script>
 </body>
 </html>
